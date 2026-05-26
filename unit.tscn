@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://uk8wh775lnoj"]
+
+[ext_resource type="Texture2D" uid="uid://dipqych807sf2" path="res://assets/unit_art/infantry_um.png" id="1_yjdlg"]
+
+[node name="Unit" type="CharacterBody2D" unique_id=1222968675]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1446266510]
+texture = ExtResource("1_yjdlg")

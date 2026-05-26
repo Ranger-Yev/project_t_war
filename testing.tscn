@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckw5cqqmmwfs4"]
+
+[ext_resource type="Texture2D" uid="uid://bgm1va13wf1yt" path="res://assets/maps/Tinkle_War.png" id="1_qrja6"]
+
+[node name="testing" type="Node2D" unique_id=848801784]
+
+[node name="TinkleWar" type="Sprite2D" parent="." unique_id=898311962]
+position = Vector2(1, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qrja6")
