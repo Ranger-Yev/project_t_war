@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckw5cqqmmwfs4"]
 
 [ext_resource type="Texture2D" uid="uid://bgm1va13wf1yt" path="res://assets/maps/Tinkle_War.png" id="1_qrja6"]
+[ext_resource type="PackedScene" uid="uid://uk8wh775lnoj" path="res://unit.tscn" id="2_co24e"]
 
 [node name="testing" type="Node2D" unique_id=848801784]
 
@@ -8,3 +9,10 @@
 position = Vector2(1, 4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qrja6")
+
+[node name="Unit" parent="." unique_id=1222968675 instance=ExtResource("2_co24e")]
+position = Vector2(-136, -180)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=337126201]
+position = Vector2(-39, -80)
+zoom = Vector2(0.5, 0.5)

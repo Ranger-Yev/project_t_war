@@ -3,6 +3,7 @@ extends CharacterBody2D
 var rng = RandomNumberGenerator.new()
 # outside resources
 @onready var sprite = $unit_graphic
+@onready var audio_p = $audio_player
 
 # division attributes, list goes as follows, [String name, float speed, ]
 @export var inf_um = ["infantry_um", 1.0]
@@ -69,6 +70,8 @@ func move(pos: Vector2, delta: float):
 	var speed_modifier = division_type[1]
 	var dir = Vector2((1.0 if pos.x > 0 else -1.0), (1.0 if pos.y > 0 else -1.0))
 	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
+	if audio_p.is_playing() == false:
+		audio_p.set_playing(true)
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D

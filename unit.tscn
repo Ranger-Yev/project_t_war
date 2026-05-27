@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqdk0jap2lh3l" path="res://unit.gd" id="1_ctwoc"]
 [ext_resource type="Texture2D" uid="uid://baooe7xnxupbo" path="res://assets/unit_art/infantry_militia.png" id="2_ctwoc"]
+[ext_resource type="AudioStream" uid="uid://cwtiihtfld2b0" path="res://assets/audio/div_om2.mp3" id="3_davkp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_davkp"]
 radius = 22.022715
@@ -27,3 +28,6 @@ debug_color = Color(0.690987, 0.49795562, 0, 0.41960785)
 
 [node name="dummy_coordinates" type="Node2D" parent="." unique_id=131872383]
 position = Vector2(360, 286)
+
+[node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=2076677286]
+stream = ExtResource("3_davkp")
