@@ -1,8 +1,22 @@
 [gd_scene format=3 uid="uid://uk8wh775lnoj"]
 
-[ext_resource type="Texture2D" uid="uid://dipqych807sf2" path="res://assets/unit_art/infantry_um.png" id="1_yjdlg"]
+[ext_resource type="Script" uid="uid://dqdk0jap2lh3l" path="res://unit.gd" id="1_ctwoc"]
+[ext_resource type="Texture2D" uid="uid://baooe7xnxupbo" path="res://assets/unit_art/infantry_militia.png" id="2_ctwoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwoc"]
+size = Vector2(36.5, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_davkp"]
+radius = 22.022715
 
 [node name="Unit" type="CharacterBody2D" unique_id=1222968675]
+script = ExtResource("1_ctwoc")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1446266510]
-texture = ExtResource("1_yjdlg")
+[node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
+texture = ExtResource("2_ctwoc")
+
+[node name="interaction_hitbox" type="CollisionShape2D" parent="." unique_id=745826594]
+shape = SubResource("RectangleShape2D_ctwoc")
+
+[node name="battle_hitbox" type="CollisionShape2D" parent="." unique_id=205030044]
+shape = SubResource("CircleShape2D_davkp")
