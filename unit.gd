@@ -29,6 +29,7 @@ var BASESPEED = 200.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
 var division_type = []
 var allegiance = "federal"
+var unit_color = Color(0,0,0,0);
 
 func _ready() -> void:
 	randomize()
