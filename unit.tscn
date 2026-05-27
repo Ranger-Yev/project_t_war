@@ -3,20 +3,35 @@
 [ext_resource type="Script" uid="uid://dqdk0jap2lh3l" path="res://unit.gd" id="1_ctwoc"]
 [ext_resource type="Texture2D" uid="uid://baooe7xnxupbo" path="res://assets/unit_art/infantry_militia.png" id="2_ctwoc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwoc"]
-size = Vector2(36.5, 20)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_davkp"]
 radius = 22.022715
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwoc"]
+size = Vector2(34, 18)
+
 [node name="Unit" type="CharacterBody2D" unique_id=1222968675]
 script = ExtResource("1_ctwoc")
+inf_um = null
+inf_mntrs = null
+inf_mil = null
+inf_strm = null
+inf_para = null
+inf_sf = null
+inf_moto = null
+inf_mech = null
+armor_mbt = null
 
 [node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
 texture = ExtResource("2_ctwoc")
 
-[node name="interaction_hitbox" type="CollisionShape2D" parent="." unique_id=745826594]
-shape = SubResource("RectangleShape2D_ctwoc")
-
 [node name="battle_hitbox" type="CollisionShape2D" parent="." unique_id=205030044]
 shape = SubResource("CircleShape2D_davkp")
+
+[node name="interaction_hitbox" type="Area2D" parent="." unique_id=1151177249]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_hitbox" unique_id=1038513234]
+shape = SubResource("RectangleShape2D_ctwoc")
+debug_color = Color(0.690987, 0.49795562, 0, 0.41960785)
+
+[node name="dummy_coordinates" type="Node2D" parent="." unique_id=131872383]
+position = Vector2(360, 286)
