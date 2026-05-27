@@ -10,16 +10,8 @@ radius = 22.022715
 size = Vector2(34, 18)
 
 [node name="Unit" type="CharacterBody2D" unique_id=1222968675]
+scale = Vector2(2, 2)
 script = ExtResource("1_ctwoc")
-inf_um = null
-inf_mntrs = null
-inf_mil = null
-inf_strm = null
-inf_para = null
-inf_sf = null
-inf_moto = null
-inf_mech = null
-armor_mbt = null
 
 [node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
 texture = ExtResource("2_ctwoc")
