@@ -4,7 +4,8 @@ var rng = RandomNumberGenerator.new()
 # outside resources
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
-
+var audio_play = true
+@onready var votimer = $votimer
 # division attributes, list goes as follows, [String name, float speed, ]
 @export var inf_um = ["infantry_um", 1.0]
 @export var inf_mntrs = ["infantry_mntrs", 1.1]
@@ -27,42 +28,27 @@ var in_pos = true
 
 var BASESPEED = 200.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
-var division_type = []
+var division_type = ["infantry_um"]
 var allegiance = "federal"
 var unit_color = Color8(0,0,0,0);
 
 func _ready() -> void:
-	randomize()
-	randomize()
+	#randomize()
 	division_type = DIVISIONS.pick_random()
-	var luck = rng.randi_range(0, 2)
-	allegiance = STATES[luck]
-	unit_color = UNITCOLORS[luck]
-	if typeof(allegiance) == TYPE_ARRAY:
-		luck = rng.randi_range(0,len(allegiance) - 1)
-		allegiance = allegiance[luck]
-		unit_color = unit_color[luck]
-	
-	select_graphic(division_type[0], unit_color)
-	
-	
+	#var luck = rng.randi_range(0, 2)
+	#allegiance = STATES[luck]
+	#unit_color = UNITCOLORS[luck]
+	#if typeof(allegiance) == TYPE_ARRAY:
+		#luck = rng.randi_range(0,len(allegiance) - 1)
+		#allegiance = allegiance[luck]
+		#unit_color = unit_color[luck]
+	#
+	#select_graphic(division_type[0], unit_color)
 
 func _process(delta: float) -> void:
 	if in_pos:
 		in_pos = false
-		randomize()
-		var x = rng.randi_range(-100, 100); var y = rng.randi_range(-100, 100)
-		
-		dest = Vector2(x, y)
-		dest = Vector2(360.0, 286.0)
-	else:
-		move(dest, delta)
-		#print(position)
-		#print(dest)
-		if position == dest:
-			#print("Unit is on site! <<<<")
-			in_pos = true
-			
+
 	move_and_slide()
 
 func move(pos: Vector2, delta: float):
@@ -70,17 +56,39 @@ func move(pos: Vector2, delta: float):
 	var speed_modifier = division_type[1]
 	var dir = Vector2((1.0 if pos.x > 0 else -1.0), (1.0 if pos.y > 0 else -1.0))
 	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
-	if audio_p.is_playing() == false:
+	if !audio_p.is_playing() and audio_play:
 		audio_p.set_playing(true)
+		audio_play = false
+		votimer.start()
+		
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D
 	sprite.set_texture(texture)
 	sprite.modulate = color
 
-
 func print_arr(arr):
 	print("{")
 	for i in arr:
 		print(i)
 	print("}")
+
+# pick one of three factions, 0 = US alligned, 1 = secession alligned, 2 = TINKLE
+# pick a sate within factions ->
+# US = [0 = Federal, 1 = Teklasiana, 2 = Commonwealth, 3 = Cascadia, 4 = Consumerist]
+# Secession = [0 = Golden Circle, 1 = Mormon, 2 = Unions]
+# Tinlke = Tinkle (no other options)
+func set_allegiance(faction_i, state_i):
+	allegiance = STATES[faction_i][state_i]
+	unit_color = UNITCOLORS[faction_i][state_i]
+	select_graphic(division_type[0], unit_color)
+
+# pick a division type
+# inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt
+# 0       1          2        3         4         5       6         7         8
+func set_unit_type(div_type_i):
+	division_type = DIVISIONS[div_type_i]
+	select_graphic(division_type[0], unit_color)
+
+func _on_votimer_timeout() -> void:
+	audio_play = true
