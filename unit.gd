@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 	if in_pos:
 		in_pos = false
 
-	move_and_slide()
+	#move_and_slide()
 
 func move(pos: Vector2, delta: float):
 	#print("Division is Oscar Mike.")

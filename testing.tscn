@@ -20,11 +20,26 @@ position = Vector2(561, -157)
 
 [node name="spawns" type="Node" parent="." unique_id=1147689969]
 
-[node name="marker1" type="Marker2D" parent="spawns" unique_id=429195970]
-position = Vector2(432, -212)
+[node name="federal" type="Node2D" parent="spawns" unique_id=169566899]
+position = Vector2(368, -148)
 
-[node name="marker2" type="Marker2D" parent="spawns" unique_id=1829318982]
-position = Vector2(500, -132)
+[node name="marker1" type="Marker2D" parent="spawns/federal" unique_id=429195970]
+position = Vector2(58, 8)
 
-[node name="marker3" type="Marker2D" parent="spawns" unique_id=549421901]
-position = Vector2(612, -152)
+[node name="marker2" type="Marker2D" parent="spawns/federal" unique_id=1829318982]
+position = Vector2(126, 88)
+
+[node name="marker3" type="Marker2D" parent="spawns/federal" unique_id=549421901]
+position = Vector2(238, 68)
+
+[node name="golden_circle" type="Node2D" parent="spawns" unique_id=683984574]
+position = Vector2(480, 60)
+
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle" unique_id=1545538635]
+position = Vector2(-64, -151)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle" unique_id=745243307]
+position = Vector2(-32, -55)
+
+[node name="marker3" type="Marker2D" parent="spawns/golden_circle" unique_id=1877847812]
+position = Vector2(148, -78)
