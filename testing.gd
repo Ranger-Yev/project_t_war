@@ -3,30 +3,32 @@ var unit_scene: PackedScene = preload("res://unit.tscn")
 
 func _ready():
 	var units = $units
-<<<<<<< HEAD
+
 	var unit = unit_scene.instantiate() as CharacterBody2D
 	units.add_child(unit)
 	unit.set_allegiance(0, 0)
 	unit.set_unit_type(7)
+	
 	var spawn_pos = $spawns.get_children()
 	unit.global_position = spawn_pos[0].global_position
 	units.add_child(unit)
 	unit.set_allegiance(0, 0)
 	unit.set_unit_type(7)
+	
 	unit.global_position = spawn_pos[1].global_position
 	units.add_child(unit)
 	unit.set_allegiance(0, 0)
 	unit.set_unit_type(7)
 	unit.global_position = spawn_pos[1].global_position
-=======
-	var spawn_pos = $spawns.get_children()
+
+	spawn_pos = $spawns.get_children()
 	var fed = $spawns/federal
 	var circle = $spawns/golden_circle
->>>>>>> 6d0cfcdb448629338c940d88fffe545d12178367
+
 	
 	for i in spawn_pos:
 		for y in i.get_children():
-			var unit = unit_scene.instantiate() as CharacterBody2D
+			unit = unit_scene.instantiate() as CharacterBody2D
 			units.add_child(unit)
 			if i == fed:
 				configure_unit(unit, 0, 0, 7, y.global_position)
