@@ -7,6 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_davkp"]
 radius = 22.022715
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_davkp"]
+size = Vector2(33, 17)
+
 [node name="Unit" type="CharacterBody2D" unique_id=1222968675]
 scale = Vector2(2, 2)
 script = ExtResource("1_ctwoc")
@@ -14,11 +17,15 @@ script = ExtResource("1_ctwoc")
 [node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
 texture = ExtResource("2_ctwoc")
 
-[node name="battle_hitbox" type="CollisionShape2D" parent="." unique_id=205030044]
-shape = SubResource("CircleShape2D_davkp")
-
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=2076677286]
 stream = ExtResource("3_davkp")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=205030044]
+shape = SubResource("CircleShape2D_davkp")
+
+[node name="select_hitbox" type="CollisionShape2D" parent="." unique_id=537999823]
+shape = SubResource("RectangleShape2D_davkp")
+debug_color = Color(0.6765481, 0.5061453, 0, 0.41960785)
 
 [node name="votimer" type="Timer" parent="." unique_id=2040699259]
 wait_time = 20.0
