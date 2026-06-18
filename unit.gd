@@ -52,14 +52,26 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if in_pos:
-		in_pos = false
+		if Input.is_action_just_pressed("LMB"):
+			dest = get_viewport().get_mouse_position()
+			in_pos = false
+	else:
+		move(dest, delta)
+		#print(dest, " : ", sprite.global_position)
+		#print("RUNNING")
+		if dest == sprite.global_position:
+			in_pos = true
 
-	#move_and_slide()
+	move_and_slide()
 
 func move(pos: Vector2, delta: float):
 	#print("Division is Oscar Mike.")
+	if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
+		#print(position, " : ", dest)
+		position = dest
+		velocity = Vector2.ZERO
 	var speed_modifier = division_type[1]
-	var dir = Vector2((1.0 if pos.x > 0 else -1.0), (1.0 if pos.y > 0 else -1.0))
+	var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
 	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
 	if !audio_p.is_playing() and audio_play:
 		audio_p.set_playing(true)
