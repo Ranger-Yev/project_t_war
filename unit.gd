@@ -4,8 +4,10 @@ var rng = RandomNumberGenerator.new()
 # outside resources
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
-var audio_play = true
+@onready var hitbox = $hitbox
+@onready var select_hitbox = $select_hitbox
 @onready var votimer = $votimer
+
 # division attributes, list goes as follows, [String name, float speed, ]
 @export var inf_um = ["infantry_um", 1.0]
 @export var inf_mntrs = ["infantry_mntrs", 1.1]
@@ -28,9 +30,12 @@ var in_pos = true
 
 var BASESPEED = 200.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
+
 var division_type = ["infantry_um"]
 var allegiance = "federal"
 var unit_color = Color8(0,0,0,0);
+var selected = false
+var audio_play = true
 
 func _ready() -> void:
 	#randomize()
@@ -47,20 +52,31 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if in_pos:
-		in_pos = false
+		if Input.is_action_just_pressed("LMB"):
+			dest = get_viewport().get_mouse_position()
+			in_pos = false
+	else:
+		move(dest, delta)
+		#print(dest, " : ", sprite.global_position)
+		#print("RUNNING")
+		if dest == sprite.global_position:
+			in_pos = true
 
-	#move_and_slide()
+	move_and_slide()
 
 func move(pos: Vector2, delta: float):
 	#print("Division is Oscar Mike.")
+	if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
+		#print(position, " : ", dest)
+		position = dest
+		velocity = Vector2.ZERO
 	var speed_modifier = division_type[1]
-	var dir = Vector2((1.0 if pos.x > 0 else -1.0), (1.0 if pos.y > 0 else -1.0))
+	var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
 	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
 	if !audio_p.is_playing() and audio_play:
 		audio_p.set_playing(true)
 		audio_play = false
 		votimer.start()
-		
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D
@@ -74,7 +90,7 @@ func print_arr(arr):
 	print("}")
 
 # pick one of three factions, 0 = US alligned, 1 = secession alligned, 2 = TINKLE
-# pick a sate within factions ->
+# pick a state within factions ->
 # US = [0 = Federal, 1 = Teklasiana, 2 = Commonwealth, 3 = Cascadia, 4 = Consumerist]
 # Secession = [0 = Golden Circle, 1 = Mormon, 2 = Unions]
 # Tinlke = Tinkle (no other options)
