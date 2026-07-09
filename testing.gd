@@ -1,7 +1,7 @@
 extends Node2D
 var unit_scene: PackedScene = preload("res://unit.tscn")
 
-func _ready():
+func _ready(): # sets up all the units
 	var units = $units
 
 	var unit = unit_scene.instantiate() as CharacterBody2D
@@ -44,8 +44,8 @@ func _ready():
 # Federal, Teklasiana, Commonwealth, Cascadia, Consumerist
 # 0, 0   | 0, 1      | 0, 2        | 0, 3    | 0, 4
 
-# Golden Circle, Mormon, Unions
-# 1, 0         | 1, 1  | 1, 2
+# Golden Circle, Tinkleologist, Unions
+# 1, 0         | 1, 1         | 1, 2
 
 # Tinkle
 # 3, any value
