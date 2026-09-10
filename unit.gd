@@ -40,43 +40,43 @@ var audio_play = true
 func _ready() -> void:
 	#randomize()
 	division_type = DIVISIONS.pick_random()
-	#var luck = rng.randi_range(0, 2)
-	#allegiance = STATES[luck]
-	#unit_color = UNITCOLORS[luck]
-	#if typeof(allegiance) == TYPE_ARRAY:
-		#luck = rng.randi_range(0,len(allegiance) - 1)
-		#allegiance = allegiance[luck]
-		#unit_color = unit_color[luck]
-	#
-	#select_graphic(division_type[0], unit_color)
+	var luck = rng.randi_range(0, 2)
+	allegiance = STATES[luck]
+	unit_color = UNITCOLORS[luck]
+	if typeof(allegiance) == TYPE_ARRAY:
+		luck = rng.randi_range(0,len(allegiance) - 1)
+		allegiance = allegiance[luck]
+		unit_color = unit_color[luck]
+	
+	select_graphic(division_type[0], unit_color)
 
-func _process(delta: float) -> void:
-	if in_pos:
-		if Input.is_action_just_pressed("LMB"):
-			dest = get_viewport().get_mouse_position()
-			in_pos = false
-	else:
-		move(dest, delta)
-		#print(dest, " : ", sprite.global_position)
-		#print("RUNNING")
-		if dest == sprite.global_position:
-			in_pos = true
-
-	move_and_slide()
-
-func move(pos: Vector2, delta: float):
-	#print("Division is Oscar Mike.")
-	if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
-		#print(position, " : ", dest)
-		position = dest
-		velocity = Vector2.ZERO
-	var speed_modifier = division_type[1]
-	var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
-	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
-	if !audio_p.is_playing() and audio_play:
-		audio_p.set_playing(true)
-		audio_play = false
-		votimer.start()
+#func _process(delta: float) -> void:
+	#if in_pos:
+		#if Input.is_action_just_pressed("LMB"):
+			#dest = get_viewport().get_mouse_position()
+			#in_pos = false
+	#else:
+		#move(dest, delta)
+		##print(dest, " : ", sprite.global_position)
+		##print("RUNNING")
+		#if dest == sprite.global_position:
+			#in_pos = true
+#
+	#move_and_slide()
+#
+#func move(pos: Vector2, delta: float):
+	##print("Division is Oscar Mike.")
+	#if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
+		##print(position, " : ", dest)
+		#position = dest
+		#velocity = Vector2.ZERO
+	#var speed_modifier = division_type[1]
+	#var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
+	#velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
+	#if !audio_p.is_playing() and audio_play:
+		#audio_p.set_playing(true)
+		#audio_play = false
+		#votimer.start()
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D
@@ -90,10 +90,14 @@ func print_arr(arr):
 	print("}")
 
 # pick one of three factions, 0 = US alligned, 1 = secession alligned, 2 = TINKLE
-# pick a state within factions ->
-# US = [0 = Federal, 1 = Teklasiana, 2 = Commonwealth, 3 = Cascadia, 4 = Consumerist]
-# Secession = [0 = Golden Circle, 1 = Mormon, 2 = Unions]
-# Tinlke = Tinkle (no other options)
+#_________________________________________________________
+# Federal, Teklasiana, Commonwealth, Cascadia, Consumerist
+# 0, 0   | 0, 1      | 0, 2        | 0, 3    | 0, 4
+# Golden Circle, Unions
+# 1, 0         | 1, 1
+# Tinkle, Tinkleologist
+# 2, 0  | 2, 1 
+
 func set_allegiance(faction_i, state_i):
 	allegiance = STATES[faction_i][state_i]
 	unit_color = UNITCOLORS[faction_i][state_i]
