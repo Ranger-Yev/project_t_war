@@ -15,17 +15,17 @@ func _draw():
 		#print("LMB")
 		draw_rect(sel_rect, Color(0.429, 0.611, 0.824, 0.549), true) # drawing the actual selection box
 		
-		touching_units(start, rect_size)
+		touching_units(start, rect_size) # detection box
 	if Input.is_action_just_released("LMB"):
 		start = Vector2.ZERO # resets the starting coords
 		collision_box.shape.set_size(Vector2.ZERO) # resets the collision box for good luck :3
 	#print(start, " : ", get_viewport().get_mouse_position())
 
-func touching_units(start_coords: Vector2, rect_size: Vector2): # the unit detection box :3
-	start_coords = Vector2(start_coords.x + (rect_size.x / 2), start_coords.y + (rect_size.y / 2))
+func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detection box :3
+	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
 	
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
-	collision_box.global_position = start_coords
+	collision_box.global_position = local_start
 	
 
 		
