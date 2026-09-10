@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://rr3e34popdd0" path="res://selector.gd" id="1_f82ba"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s37yc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lc62"]
 
-[node name="Selector" type="Node2D" unique_id=1444498103]
+[node name="Selector" type="Area2D" unique_id=1897362753]
 script = ExtResource("1_f82ba")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1062874968]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110672301]
+shape = SubResource("RectangleShape2D_5lc62")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=363094501]
-shape = SubResource("RectangleShape2D_s37yc")
-debug_color = Color(0.8389898, 0.0011895996, 0.92673767, 0.41960785)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1059250047]
+position = Vector2(640, 360)

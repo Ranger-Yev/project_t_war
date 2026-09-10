@@ -4,7 +4,6 @@ var rng = RandomNumberGenerator.new()
 # outside resources
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
-@onready var hitbox = $hitbox
 @onready var select_hitbox = $select_hitbox
 @onready var votimer = $votimer
 

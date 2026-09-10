@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tcquah0xhiht" path="res://testing.gd" id="1_feb8i"]
 [ext_resource type="Texture2D" uid="uid://bgm1va13wf1yt" path="res://assets/maps/Tinkle_War.png" id="1_qrja6"]
+[ext_resource type="PackedScene" uid="uid://ccogmnlt76db2" path="res://selector.tscn" id="3_feb8i"]
 
 [node name="testing" type="Node2D" unique_id=848801784]
 script = ExtResource("1_feb8i")
@@ -10,10 +11,6 @@ script = ExtResource("1_feb8i")
 position = Vector2(1, 4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qrja6")
-
-[node name="camera" type="Camera2D" parent="." unique_id=337126201]
-position = Vector2(-39, -80)
-zoom = Vector2(0.5, 0.5)
 
 [node name="units" type="Node2D" parent="." unique_id=1411853458]
 position = Vector2(561, -157)
@@ -94,3 +91,5 @@ position = Vector2(-32, -55)
 
 [node name="marker3" type="Marker2D" parent="spawns/golden_circle" unique_id=1877847812]
 position = Vector2(148, -78)
+
+[node name="Selector" parent="." unique_id=1897362753 instance=ExtResource("3_feb8i")]

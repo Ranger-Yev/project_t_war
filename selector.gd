@@ -1,9 +1,10 @@
 extends Node2D
 var start = null
-@onready var collision_box: CollisionShape2D =  $Area2D/CollisionShape2D
-
+@onready var collision_box: CollisionShape2D =  $CollisionShape2D
+@onready var selector = $"."
 func _process(_delta: float) -> void:
 	queue_redraw()
+	# actual 
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
@@ -26,6 +27,3 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start
-	
-
-		
