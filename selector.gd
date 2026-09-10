@@ -14,4 +14,4 @@ func _draw():
 		draw_rect(sel_rect, Color(0.429, 0.611, 0.824, 0.549), true)
 	if Input.is_action_just_released("LMB"):
 		start = Vector2.ZERO
-	print(start, " : ", get_viewport().get_mouse_position())
+	#print(start, " : ", get_viewport().get_mouse_position())

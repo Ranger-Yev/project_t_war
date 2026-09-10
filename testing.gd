@@ -1,19 +1,9 @@
 extends Node2D
 var unit_scene: PackedScene = preload("res://unit.tscn") # unit template
 
-<<<<<<< HEAD
 func _ready():
 	var units = $units # path to where all units are stored
-=======
-func _ready(): # sets up all the units
-	var units = $units
 
-	var unit = unit_scene.instantiate() as CharacterBody2D
-	units.add_child(unit)
-	unit.set_allegiance(0, 0)
-	unit.set_unit_type(7)
->>>>>>> 671ec4aabf7d3d904ce3993af8875d200cfdf478
-	
 	var spawn_pos = $spawns.get_children() # all spawns
 	var fed = $spawns/federal # federal spawns
 	var circle = $spawns/golden_circle # gc spawns
@@ -41,13 +31,11 @@ func _ready(): # sets up all the units
 # Federal, Teklasiana, Commonwealth, Cascadia, Consumerist
 # 0, 0   | 0, 1      | 0, 2        | 0, 3    | 0, 4
 
-<<<<<<< HEAD
 # Golden Circle, Unions
 # 1, 0         | 1, 1 
-=======
+
 # Golden Circle, Tinkleologist, Unions
 # 1, 0         | 1, 1         | 1, 2
->>>>>>> 671ec4aabf7d3d904ce3993af8875d200cfdf478
 
 # Tinkle, Tinkleologist
 # 2, 0  | 2, 1 
