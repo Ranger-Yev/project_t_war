@@ -30,10 +30,9 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start
 	
-	local_start.x += SPEED * dirx
-	local_start.y += SPEED * diry
+	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	dirx = Input.get_axis("Left", "Right")
 	diry = Input.get_axis("Up", "Down")
 
