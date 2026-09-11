@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var SPEED = 5000.0
+var SPEED = 1000.0
 var dirx
 var diry
 var start = null
 @onready var collision_box: CollisionShape2D = $Selector/CollisionShape2D
 @onready var selector = $Selector
+@onready var sel_move = $"."
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
@@ -35,9 +36,7 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 func _process(delta: float) -> void:
 	dirx = Input.get_axis("Left", "Right")
 	diry = Input.get_axis("Up", "Down")
-	velocity.x = dirx * SPEED * delta
-	velocity.y = diry * SPEED * delta
+	sel_move.global_position.x += dirx * SPEED * delta; sel_move.global_position.y += diry * SPEED * delta
 	
-	
-	move_and_slide()
+
 	queue_redraw()
