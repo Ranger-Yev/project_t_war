@@ -27,9 +27,6 @@ func _ready():
 					configure_unit(unit, 1, 0, 3, y.global_position) # seccession alligned, gc, stormtroops
 				#print("circle")
 
-func _process(_delta: float) -> void:
-	queue_redraw() # Draw Selection Box stuff
-
 #_________________________________________________________
 # Federal, Teklasiana, Commonwealth, Cascadia, Consumerist
 # 0, 0   | 0, 1      | 0, 2        | 0, 3    | 0, 4

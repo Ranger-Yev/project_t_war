@@ -13,6 +13,7 @@ script = ExtResource("1_f82ba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Selector" unique_id=1110672301]
 shape = SubResource("RectangleShape2D_5lc62")
+debug_color = Color(0.63334984, 0.14021325, 0.98723644, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="Selector" unique_id=1059250047]
 position = Vector2(640, 360)
