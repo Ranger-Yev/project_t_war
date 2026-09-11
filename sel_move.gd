@@ -36,7 +36,5 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 func _process(delta: float) -> void:
 	dirx = Input.get_axis("Left", "Right")
 	diry = Input.get_axis("Up", "Down")
-	sel_move.global_position.x += dirx * SPEED * delta; sel_move.global_position.y += diry * SPEED * delta
-	
 
 	queue_redraw()
