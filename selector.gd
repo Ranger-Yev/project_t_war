@@ -2,9 +2,10 @@ extends Node2D
 var start = null
 @onready var collision_box: CollisionShape2D =  $CollisionShape2D
 @onready var selector = $"."
+
 func _process(_delta: float) -> void:
 	queue_redraw()
-	# actual 
+	
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):

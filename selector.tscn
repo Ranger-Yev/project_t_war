@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://ccogmnlt76db2"]
 
 [ext_resource type="Script" uid="uid://rr3e34popdd0" path="res://selector.gd" id="1_f82ba"]
+[ext_resource type="Script" uid="uid://dk7jg6vp1raj1" path="res://sel_move.gd" id="1_pl5vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lc62"]
 
-[node name="Selector" type="Area2D" unique_id=1897362753]
+[node name="sel_move" type="CharacterBody2D" unique_id=1283746510]
+script = ExtResource("1_pl5vu")
+
+[node name="Selector" type="Area2D" parent="." unique_id=1897362753]
 script = ExtResource("1_f82ba")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110672301]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selector" unique_id=1110672301]
 shape = SubResource("RectangleShape2D_5lc62")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1059250047]
+[node name="Camera2D" type="Camera2D" parent="Selector" unique_id=1059250047]
 position = Vector2(640, 360)
