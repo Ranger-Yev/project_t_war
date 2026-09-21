@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 var selected = []
 var SPEED = 1000.0
-var dirx
-var diry
+var dir
 var start = null
+var offset = Vector2.ZERO
 @onready var collision_box: CollisionShape2D = $Selector/CollisionShape2D
 @onready var selector = $Selector
 @onready var sel_move = $"."
@@ -27,8 +27,10 @@ func _draw():
 
 func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detection box :3
 	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
+	dir = Input.get_vector("Left", "Right", "Up", "Down")
+	
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
-	collision_box.global_position = local_start
+	collision_box.global_position = local_start + offset
 	
 	# TO DO - Make the selector actuaslly select units
 	selected = selector.get_overlapping_bodies()
@@ -36,7 +38,10 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 func get_selected():
 	return selected
 
-func _process(_delta: float) -> void:
-	dirx = Input.get_axis("Left", "Right")
-	diry = Input.get_axis("Up", "Down")
+func _process(delta: float) -> void:
+	dir = Input.get_vector("Left", "Right", "Up", "Down")
+	global_position += (SPEED * dir * delta)
+	offset += (SPEED * dir * delta)
+	
+
 	queue_redraw()
