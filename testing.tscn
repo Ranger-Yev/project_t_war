@@ -13,7 +13,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qrja6")
 
 [node name="units" type="Node2D" parent="." unique_id=1411853458]
-position = Vector2(561, -157)
+
+[node name="federal" type="Node2D" parent="units" unique_id=1364833277]
+
+[node name="golden_circle" type="Node2D" parent="units" unique_id=1383814236]
 
 [node name="spawns" type="Node" parent="." unique_id=1147689969]
 

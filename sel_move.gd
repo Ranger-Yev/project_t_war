@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var selected = []
 var SPEED = 1000.0
 var dirx
 var diry
@@ -26,14 +27,16 @@ func _draw():
 
 func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detection box :3
 	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
-	
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start
 	
-	
+	# TO DO - Make the selector actuaslly select units
+	selected = selector.get_overlapping_bodies()
+
+func get_selected():
+	return selected
 
 func _process(_delta: float) -> void:
 	dirx = Input.get_axis("Left", "Right")
 	diry = Input.get_axis("Up", "Down")
-
 	queue_redraw()
