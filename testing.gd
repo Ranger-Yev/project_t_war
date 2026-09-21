@@ -60,7 +60,7 @@ func configure_unit(u: CharacterBody2D, f: int, s: int, ut: int, pos) -> void:
 
 func _process(_delta :float) -> void:
 	var selected = selector.get_selected()
-	print(selected)
+	#print(selected)
 	for i in selected:
 		
 		if i.get_parent().name != "federal":
