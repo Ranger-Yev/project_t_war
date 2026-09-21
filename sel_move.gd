@@ -27,12 +27,8 @@ func _draw():
 
 func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detection box :3
 	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
-	dir = Input.get_vector("Left", "Right", "Up", "Down")
-	
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start + offset
-	
-	# TO DO - Make the selector actuaslly select units
 	selected = selector.get_overlapping_bodies()
 
 func get_selected():
@@ -42,6 +38,4 @@ func _process(delta: float) -> void:
 	dir = Input.get_vector("Left", "Right", "Up", "Down")
 	global_position += (SPEED * dir * delta)
 	offset += (SPEED * dir * delta)
-	
-
 	queue_redraw()
