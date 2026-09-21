@@ -1,8 +1,10 @@
 extends Node2D
 var unit_scene: PackedScene = preload("res://unit.tscn") # unit template
 @onready var selector = $Selector
+var pa = "unassigned" # player allegiance
 
 func _ready():
+	pa = "federal"
 	var units = [$units/federal, $units/golden_circle] # path to where all units are stored
 	
 	
@@ -55,6 +57,13 @@ func configure_unit(u: CharacterBody2D, f: int, s: int, ut: int, pos) -> void:
 	u.global_position = pos
 	u.set_unit_type(ut)
 
+
 func _process(_delta :float) -> void:
 	var selected = selector.get_selected()
 	print(selected)
+	for i in selected:
+		
+		if i.get_parent().name != "federal":
+			selected.erase(i)
+	
+	#print(selected)

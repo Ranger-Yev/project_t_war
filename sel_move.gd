@@ -8,6 +8,7 @@ var offset = Vector2.ZERO
 @onready var collision_box: CollisionShape2D = $Selector/CollisionShape2D
 @onready var selector = $Selector
 @onready var sel_move = $"."
+var alleg = "unassigned" # allegiance
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
@@ -30,6 +31,7 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start + offset
 	selected = selector.get_overlapping_bodies()
+
 
 func get_selected():
 	return selected
