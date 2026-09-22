@@ -2,11 +2,22 @@ extends Node2D
 var unit_scene: PackedScene = preload("res://unit.tscn") # unit template
 @onready var selector = $Selector
 var pa = "unassigned" # player allegiance
+var selected = []
+
+func _process(_delta :float) -> void:
+	selected = selector.get_selected()
+	#print(selected)
+	for i in selected:
+		
+		if i.get_parent().name != "federal":
+			selected.erase(i)
+	
+	#print(selected)
+
 
 func _ready():
 	pa = "federal"
 	var units = [$units/federal, $units/golden_circle] # path to where all units are stored
-	
 	
 	var spawn_pos = $spawns.get_children() # all spawns
 	var fed = $spawns/federal # federal spawns
@@ -15,7 +26,7 @@ func _ready():
 	for i in spawn_pos:
 		var spawn_unit_types = i.get_children() 
 		for z in spawn_unit_types:
-			print(z)
+			#print(z)
 			for y in z.get_children():
 				#print(y.global_position)
 				var unit = unit_scene.instantiate() as CharacterBody2D
@@ -43,10 +54,7 @@ func _ready():
 					#print("federal")
 				if i == circle: # gc spawns
 					units[1].add_child(unit)
-					if y == $spawns/golden_circle/marker1:
-						configure_unit(unit, 1, 0, 2, y.global_position) # seccession alligned, gc, militia
-					else:
-						configure_unit(unit, 1, 0, 3, y.global_position) # seccession alligned, gc, stormtroops
+					configure_unit(unit, 1, 0, unit_type, y.global_position) # seccession alligned, gc, unit_type
 					#print("circle")
 
 #_________________________________________________________
@@ -74,13 +82,8 @@ func configure_unit(u: CharacterBody2D, f: int, s: int, ut: int, pos) -> void:
 	u.global_position = pos
 	u.set_unit_type(ut)
 
-
-func _process(_delta :float) -> void:
-	var selected = selector.get_selected()
-	#print(selected)
-	for i in selected:
+func is_selected(u: CharacterBody2D):
+	if u in selected:
+		return true
+	return false
 		
-		if i.get_parent().name != "federal":
-			selected.erase(i)
-	
-	#print(selected)

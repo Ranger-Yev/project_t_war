@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
 # outside resources
+@onready var itself = $"."
+var main_scene_node
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
 @onready var select_hitbox = $select_hitbox
@@ -37,6 +39,9 @@ var selected = false
 var audio_play = true
 
 func _ready() -> void:
+	if itself.get_parent() != null:
+		main_scene_node = itself.get_parent().get_parent().get_parent()
+		#print(main_scene_node)
 	#randomize()
 	division_type = DIVISIONS.pick_random()
 	var luck = rng.randi_range(0, 2)
@@ -49,33 +54,45 @@ func _ready() -> void:
 	
 	select_graphic(division_type[0], unit_color)
 
-#func _process(delta: float) -> void:
-	#if in_pos:
-		#if Input.is_action_just_pressed("LMB"):
-			#dest = get_viewport().get_mouse_position()
-			#in_pos = false
-	#else:
-		#move(dest, delta)
-		##print(dest, " : ", sprite.global_position)
-		##print("RUNNING")
-		#if dest == sprite.global_position:
-			#in_pos = true
-#
-	#move_and_slide()
-#
-#func move(pos: Vector2, delta: float):
-	##print("Division is Oscar Mike.")
-	#if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
-		##print(position, " : ", dest)
-		#position = dest
-		#velocity = Vector2.ZERO
-	#var speed_modifier = division_type[1]
-	#var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
-	#velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
-	#if !audio_p.is_playing() and audio_play:
-		#audio_p.set_playing(true)
-		#audio_play = false
-		#votimer.start()
+func _process(delta: float) -> void:
+	if main_scene_node.is_selected(itself):
+		#print(itself, " is selected")
+		selected = true
+	else:
+		selected = false
+	if in_pos and selected:
+		if Input.is_action_just_pressed("RMB"):
+			dest = get_viewport().get_mouse_position()
+			print(itself, " -:- ", dest)
+			in_pos = false
+	else:
+		var name_of_parent = itself.get_parent().name
+		if name_of_parent == "federal" and selected:
+			move(dest, delta)
+			#print(dest, " : ", sprite.global_position)
+			#print("RUNNING")
+			
+		if dest == sprite.global_position:
+			in_pos = true
+		if Input.is_action_just_pressed("RMB") and selected:
+			dest = get_viewport().get_mouse_position()
+			print(itself, " -:- ", dest)
+
+	move_and_slide()
+
+func move(pos: Vector2, delta: float):
+	#print("Division is Oscar Mike.")
+	if (position.x > dest.x - 1 and position.x < dest.x + 1) and (position.y > dest.y - 1 and position.y < dest.y + 1):
+		#print(position, " : ", dest)
+		position = dest
+		velocity = Vector2.ZERO
+	var speed_modifier = division_type[1]
+	var dir = Vector2((1.0 if pos.x > position.x else -1.0), (1.0 if pos.y > position.y else -1.0))
+	velocity = Vector2(((BASESPEED * speed_modifier) * dir.x) * delta, ((BASESPEED * speed_modifier) * dir.y) * delta)
+	if !audio_p.is_playing() and audio_play:
+		audio_p.set_playing(true)
+		audio_play = false
+		votimer.start()
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D

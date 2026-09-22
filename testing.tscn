@@ -186,19 +186,181 @@ position = Vector2(526, -168)
 position = Vector2(480, 60)
 
 [node name="marker1" type="Marker2D" parent="spawns/golden_circle" unique_id=1486027374]
-position = Vector2(36, -2)
+position = Vector2(95, 115)
 
 [node name="inf_um" type="Node2D" parent="spawns/golden_circle" unique_id=973294456]
 
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=2042823447]
+position = Vector2(-355, -44)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=128928256]
+position = Vector2(-348, 42)
+
+[node name="marker3" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=1446818042]
+position = Vector2(-342, 118)
+
+[node name="marker4" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=503754326]
+position = Vector2(-270, 44)
+
+[node name="marker5" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=1342996061]
+position = Vector2(-169, 159)
+
+[node name="marker6" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=2112090641]
+position = Vector2(-113, 226)
+
+[node name="marker7" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=1504538264]
+position = Vector2(-120, 302)
+
+[node name="marker8" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=371329493]
+position = Vector2(-33, 354)
+
+[node name="marker9" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=460776462]
+position = Vector2(65, -67)
+
+[node name="marker10" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=1182057285]
+position = Vector2(238, -69)
+
+[node name="marker11" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=115948814]
+position = Vector2(180, 27)
+
+[node name="marker12" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=1098269603]
+position = Vector2(348, 28)
+
+[node name="marker13" type="Marker2D" parent="spawns/golden_circle/inf_um" unique_id=284739767]
+position = Vector2(497, 53)
+
 [node name="inf_mntrs" type="Node2D" parent="spawns/golden_circle" unique_id=5897818]
+
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle/inf_mntrs" unique_id=1534094261]
+position = Vector2(-692, 543)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle/inf_mntrs" unique_id=662023955]
+position = Vector2(-598, 547)
+
+[node name="marker3" type="Marker2D" parent="spawns/golden_circle/inf_mntrs" unique_id=2139980446]
+position = Vector2(-509, 509)
 
 [node name="inf_mil" type="Node2D" parent="spawns/golden_circle" unique_id=1911580245]
 
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1807152482]
+position = Vector2(-614, 622)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=250718966]
+position = Vector2(228, 251)
+
+[node name="marker3" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1129409141]
+position = Vector2(316, 352)
+
+[node name="marker4" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1821465730]
+position = Vector2(388, 302)
+
+[node name="marker5" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1385935828]
+position = Vector2(398, 452)
+
+[node name="marker6" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1374283841]
+position = Vector2(594, -204)
+
+[node name="marker7" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=448033196]
+position = Vector2(449, -74)
+
+[node name="marker8" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=867427382]
+position = Vector2(203, -139)
+
+[node name="marker9" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=439942119]
+position = Vector2(-66, -150)
+
+[node name="marker10" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1252975573]
+position = Vector2(-185, -194)
+
+[node name="marker11" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=473945932]
+position = Vector2(-304, -105)
+
+[node name="marker12" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=438072698]
+position = Vector2(-488, -78)
+
+[node name="marker13" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1693461714]
+position = Vector2(-558, -173)
+
+[node name="marker14" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1781874759]
+position = Vector2(-477, 42)
+
+[node name="marker15" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=307306525]
+position = Vector2(-490, 98)
+
+[node name="marker16" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=42778132]
+position = Vector2(-484, 254)
+
+[node name="marker17" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=358208979]
+position = Vector2(-259, 293)
+
+[node name="marker18" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1369911227]
+position = Vector2(-261, 336)
+
+[node name="marker19" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=946395714]
+position = Vector2(-227, 404)
+
+[node name="marker20" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1014485420]
+position = Vector2(-174, 442)
+
+[node name="marker21" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1193694042]
+position = Vector2(-366, 439)
+
+[node name="marker22" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1383363971]
+position = Vector2(-724, -595)
+
+[node name="marker23" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=430418433]
+position = Vector2(-844, -650)
+
+[node name="marker24" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1063198241]
+position = Vector2(-1165, 29)
+
+[node name="marker25" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=824520783]
+position = Vector2(-1038, 57)
+
+[node name="marker26" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=403411566]
+position = Vector2(-1035, 141)
+
+[node name="marker27" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=146652990]
+position = Vector2(-1052, 220)
+
+[node name="marker28" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1875244392]
+position = Vector2(-1129, 208)
+
 [node name="inf_strm" type="Node2D" parent="spawns/golden_circle" unique_id=1453913631]
+
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=154938168]
+position = Vector2(-193, -33)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1441797048]
+position = Vector2(-56, -35)
+
+[node name="marker3" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1389793251]
+position = Vector2(425, 357)
+
+[node name="marker4" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1969598173]
+position = Vector2(456, 496)
+
+[node name="marker5" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=956763731]
+position = Vector2(-911, -41)
+
+[node name="marker6" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1715781832]
+position = Vector2(-1110, 60)
+
+[node name="marker7" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1182151437]
+position = Vector2(-1108, 145)
+
+[node name="marker8" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=97842640]
+position = Vector2(-778, -624)
 
 [node name="inf_para" type="Node2D" parent="spawns/golden_circle" unique_id=287848211]
 
 [node name="inf_sf" type="Node2D" parent="spawns/golden_circle" unique_id=600009696]
+
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle/inf_sf" unique_id=1815791681]
+position = Vector2(-961, -92)
+
+[node name="marker2" type="Marker2D" parent="spawns/golden_circle/inf_sf" unique_id=725956678]
+position = Vector2(-333, 221)
 
 [node name="inf_moto" type="Node2D" parent="spawns/golden_circle" unique_id=1232237310]
 
