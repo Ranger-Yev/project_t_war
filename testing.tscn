@@ -20,79 +20,190 @@ texture = ExtResource("1_qrja6")
 
 [node name="spawns" type="Node" parent="." unique_id=1147689969]
 
+[node name="template_nation_spawns" type="Node2D" parent="spawns" unique_id=1628229973]
+position = Vector2(-1527, -1268)
+
+[node name="marker1" type="Marker2D" parent="spawns/template_nation_spawns" unique_id=1160565742]
+position = Vector2(36, -2)
+
+[node name="inf_um" type="Node2D" parent="spawns/template_nation_spawns" unique_id=684719896]
+
+[node name="inf_mntrs" type="Node2D" parent="spawns/template_nation_spawns" unique_id=122429345]
+
+[node name="inf_mil" type="Node2D" parent="spawns/template_nation_spawns" unique_id=179836358]
+
+[node name="inf_strm" type="Node2D" parent="spawns/template_nation_spawns" unique_id=1982320042]
+
+[node name="inf_para" type="Node2D" parent="spawns/template_nation_spawns" unique_id=1181884758]
+
+[node name="inf_sf" type="Node2D" parent="spawns/template_nation_spawns" unique_id=1278405928]
+
+[node name="inf_moto" type="Node2D" parent="spawns/template_nation_spawns" unique_id=1215782082]
+
+[node name="inf_mech" type="Node2D" parent="spawns/template_nation_spawns" unique_id=1487511751]
+
+[node name="armor_mbt" type="Node2D" parent="spawns/template_nation_spawns" unique_id=782001582]
+
 [node name="federal" type="Node2D" parent="spawns" unique_id=169566899]
 position = Vector2(368, -148)
 
-[node name="marker1" type="Marker2D" parent="spawns/federal" unique_id=429195970]
-position = Vector2(36, -234)
+[node name="inf_um" type="Node2D" parent="spawns/federal" unique_id=968894969]
 
-[node name="marker2" type="Marker2D" parent="spawns/federal" unique_id=1829318982]
-position = Vector2(5, -196)
+[node name="marker1" type="Marker2D" parent="spawns/federal/inf_um" unique_id=666846834]
+position = Vector2(-258, -126)
 
-[node name="marker3" type="Marker2D" parent="spawns/federal" unique_id=549421901]
-position = Vector2(-65, -165)
+[node name="marker2" type="Marker2D" parent="spawns/federal/inf_um" unique_id=150976435]
+position = Vector2(-214, -30)
 
-[node name="marker4" type="Marker2D" parent="spawns/federal" unique_id=71178594]
-position = Vector2(-52, -95)
+[node name="marker3" type="Marker2D" parent="spawns/federal/inf_um" unique_id=1598799104]
+position = Vector2(-210, 62)
 
-[node name="marker5" type="Marker2D" parent="spawns/federal" unique_id=714457301]
-position = Vector2(-101, -137)
+[node name="marker4" type="Marker2D" parent="spawns/federal/inf_um" unique_id=70525433]
+position = Vector2(-38, 114)
 
-[node name="marker6" type="Marker2D" parent="spawns/federal" unique_id=1888329422]
-position = Vector2(-137, -79)
+[node name="marker5" type="Marker2D" parent="spawns/federal/inf_um" unique_id=908634992]
+position = Vector2(71, 13)
 
-[node name="marker7" type="Marker2D" parent="spawns/federal" unique_id=1765652829]
-position = Vector2(-188, -138)
+[node name="marker6" type="Marker2D" parent="spawns/federal/inf_um" unique_id=551662752]
+position = Vector2(189, -247)
 
-[node name="marker8" type="Marker2D" parent="spawns/federal" unique_id=87142754]
-position = Vector2(-289, -131)
+[node name="marker7" type="Marker2D" parent="spawns/federal/inf_um" unique_id=715722950]
+position = Vector2(316, -251)
 
-[node name="marker9" type="Marker2D" parent="spawns/federal" unique_id=1433929402]
-position = Vector2(-240, -75)
+[node name="marker8" type="Marker2D" parent="spawns/federal/inf_um" unique_id=303732529]
+position = Vector2(419, 166)
 
-[node name="marker10" type="Marker2D" parent="spawns/federal" unique_id=2063213630]
-position = Vector2(-219, -17)
+[node name="marker9" type="Marker2D" parent="spawns/federal/inf_um" unique_id=467715915]
+position = Vector2(631, 706)
 
-[node name="marker11" type="Marker2D" parent="spawns/federal" unique_id=904606213]
-position = Vector2(-253, 32)
+[node name="marker10" type="Marker2D" parent="spawns/federal/inf_um" unique_id=467222967]
+position = Vector2(486, 610)
 
-[node name="marker12" type="Marker2D" parent="spawns/federal" unique_id=67616526]
-position = Vector2(-251, 112)
+[node name="inf_mntrs" type="Node2D" parent="spawns/federal" unique_id=316817778]
 
-[node name="marker13" type="Marker2D" parent="spawns/federal" unique_id=1641256689]
-position = Vector2(-182, 135)
+[node name="marker9" type="Marker2D" parent="spawns/federal/inf_mntrs" unique_id=1022036840]
+position = Vector2(494, 34)
 
-[node name="marker14" type="Marker2D" parent="spawns/federal" unique_id=1113973214]
-position = Vector2(-179, 52)
+[node name="marker10" type="Marker2D" parent="spawns/federal/inf_mntrs" unique_id=2038481652]
+position = Vector2(687, 198)
 
-[node name="marker15" type="Marker2D" parent="spawns/federal" unique_id=1454718468]
-position = Vector2(-116, 78)
+[node name="inf_mil" type="Node2D" parent="spawns/federal" unique_id=54481713]
 
-[node name="marker16" type="Marker2D" parent="spawns/federal" unique_id=935786896]
-position = Vector2(-57, 120)
+[node name="marker11" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=1870160240]
+position = Vector2(597, 164)
 
-[node name="marker17" type="Marker2D" parent="spawns/federal" unique_id=518386112]
-position = Vector2(-2, 157)
+[node name="marker12" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=119044234]
+position = Vector2(-80, -78)
 
-[node name="marker18" type="Marker2D" parent="spawns/federal" unique_id=606457224]
-position = Vector2(-17, 34)
+[node name="marker13" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=954881347]
+position = Vector2(50, -101)
 
-[node name="marker19" type="Marker2D" parent="spawns/federal" unique_id=320127868]
-position = Vector2(-61, -33)
+[node name="marker14" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=1081766296]
+position = Vector2(570, -311)
 
-[node name="marker20" type="Marker2D" parent="spawns/federal" unique_id=1547183841]
-position = Vector2(61, 101)
+[node name="marker15" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=206727522]
+position = Vector2(709, -327)
+
+[node name="marker16" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=234942355]
+position = Vector2(747, -245)
+
+[node name="marker17" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=74985722]
+position = Vector2(793, -99)
+
+[node name="marker18" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=520208262]
+position = Vector2(682, -46)
+
+[node name="marker19" type="Marker2D" parent="spawns/federal/inf_mil" unique_id=174748312]
+position = Vector2(572, 641)
+
+[node name="inf_strm" type="Node2D" parent="spawns/federal" unique_id=1815533805]
+
+[node name="inf_para" type="Node2D" parent="spawns/federal" unique_id=301522552]
+
+[node name="marker19" type="Marker2D" parent="spawns/federal/inf_para" unique_id=779340774]
+position = Vector2(685, 102)
+
+[node name="marker20" type="Marker2D" parent="spawns/federal/inf_para" unique_id=1182229192]
+position = Vector2(692, -170)
+
+[node name="inf_sf" type="Node2D" parent="spawns/federal" unique_id=959542397]
+
+[node name="marker21" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=2002053361]
+position = Vector2(433, 405)
+
+[node name="marker22" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=19427180]
+position = Vector2(136, 426)
+
+[node name="marker23" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=1372619120]
+position = Vector2(-23, 274)
+
+[node name="marker24" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=1796605757]
+position = Vector2(-1027, 356)
+
+[node name="marker25" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=1095332682]
+position = Vector2(-547, -63)
+
+[node name="marker26" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=1960822279]
+position = Vector2(-797, -252)
+
+[node name="marker27" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=341957504]
+position = Vector2(-74, -307)
+
+[node name="marker28" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=284777836]
+position = Vector2(317, -327)
+
+[node name="marker29" type="Marker2D" parent="spawns/federal/inf_sf" unique_id=1261609287]
+position = Vector2(520, 735)
+
+[node name="inf_moto" type="Node2D" parent="spawns/federal" unique_id=1191564430]
+
+[node name="marker30" type="Marker2D" parent="spawns/federal/inf_moto" unique_id=1071855521]
+position = Vector2(196, 70)
+
+[node name="marker31" type="Marker2D" parent="spawns/federal/inf_moto" unique_id=382250302]
+position = Vector2(422, -146)
+
+[node name="inf_mech" type="Node2D" parent="spawns/federal" unique_id=1701976553]
+
+[node name="marker32" type="Marker2D" parent="spawns/federal/inf_mech" unique_id=558109868]
+position = Vector2(473, -159)
+
+[node name="marker33" type="Marker2D" parent="spawns/federal/inf_mech" unique_id=643398612]
+position = Vector2(53, -214)
+
+[node name="armor_mbt" type="Node2D" parent="spawns/federal" unique_id=1649612650]
+
+[node name="marker34" type="Marker2D" parent="spawns/federal/armor_mbt" unique_id=1553992341]
+position = Vector2(376, -119)
+
+[node name="marker35" type="Marker2D" parent="spawns/federal/armor_mbt" unique_id=999983629]
+position = Vector2(326, -74)
+
+[node name="marker36" type="Marker2D" parent="spawns/federal/armor_mbt" unique_id=1346799728]
+position = Vector2(526, -168)
 
 [node name="golden_circle" type="Node2D" parent="spawns" unique_id=683984574]
 position = Vector2(480, 60)
 
-[node name="marker1" type="Marker2D" parent="spawns/golden_circle" unique_id=1545538635]
-position = Vector2(-64, -151)
+[node name="marker1" type="Marker2D" parent="spawns/golden_circle" unique_id=1486027374]
+position = Vector2(36, -2)
 
-[node name="marker2" type="Marker2D" parent="spawns/golden_circle" unique_id=745243307]
-position = Vector2(-32, -55)
+[node name="inf_um" type="Node2D" parent="spawns/golden_circle" unique_id=973294456]
 
-[node name="marker3" type="Marker2D" parent="spawns/golden_circle" unique_id=1877847812]
-position = Vector2(148, -78)
+[node name="inf_mntrs" type="Node2D" parent="spawns/golden_circle" unique_id=5897818]
+
+[node name="inf_mil" type="Node2D" parent="spawns/golden_circle" unique_id=1911580245]
+
+[node name="inf_strm" type="Node2D" parent="spawns/golden_circle" unique_id=1453913631]
+
+[node name="inf_para" type="Node2D" parent="spawns/golden_circle" unique_id=287848211]
+
+[node name="inf_sf" type="Node2D" parent="spawns/golden_circle" unique_id=600009696]
+
+[node name="inf_moto" type="Node2D" parent="spawns/golden_circle" unique_id=1232237310]
+
+[node name="inf_mech" type="Node2D" parent="spawns/golden_circle" unique_id=671192354]
+
+[node name="armor_mbt" type="Node2D" parent="spawns/golden_circle" unique_id=1849914186]
 
 [node name="Selector" parent="." unique_id=1897362753 instance=ExtResource("3_feb8i")]

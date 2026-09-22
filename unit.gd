@@ -19,8 +19,8 @@ var rng = RandomNumberGenerator.new()
 @export var armor_mbt = ["tank_division", 3.0]
 
 # complete list of states and corresponding unit color
-var STATES = [ ["federal", "teklasiana", "commonwealth", "cascadia", "cspc"] , ["circle", "mormon", "unions"] , "tinkle"]
-var UNITCOLORS = [[Color8(50,60,210,255), Color8(15,85,125,255), Color8(130,165,140,255), Color8(65,230,120,255), Color8(210,130,90,255)], [Color8(0,0,0,255), Color8(185,150,255,255), Color8(135.0, 18.004, 19.406, 1.0)], Color8(200,0,200,255)]
+var STATES = [ ["federal", "teklasiana", "commonwealth", "cascadia", "cspc"] , ["circle", "unions"] , ["tinkle","tinkleologist"]]
+var UNITCOLORS = [[Color8(50,60,210,255), Color8(15,85,125,255), Color8(130,165,140,255), Color8(65,230,120,255), Color8(210,130,90,255)], [Color8(0,0,0,255), Color8(135.0, 18.004, 19.406, 1.0)], [Color8(200,0,200,255), Color8(185,150,255,255)]]
 
 
 # internal variables not meant for human eyes
