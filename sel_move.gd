@@ -1,14 +1,21 @@
 extends CharacterBody2D
 
 var selected = []
-var SPEED = 1000.0
+const SPEED = 1000.0
 var dir
 var start = null
 var offset = Vector2.ZERO
+@onready var cam = $Selector/Camera2D
 @onready var collision_box: CollisionShape2D = $Selector/CollisionShape2D
 @onready var selector = $Selector
 @onready var sel_move = $"."
 var alleg = "unassigned" # allegiance
+
+const ZOOM_MAX = Vector2(6,6)
+const ZOOM_MIN = Vector2(0.5,0.5)
+const ZOOM_SPEED = 1
+var zoom_in = false
+var zoom_out = false
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
@@ -32,6 +39,8 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	collision_box.global_position = local_start + offset
 	selected = selector.get_overlapping_bodies()
 
+func zoom(zoom_d: float) -> void:
+	pass
 
 func get_selected():
 	return selected
@@ -40,4 +49,5 @@ func _process(delta: float) -> void:
 	dir = Input.get_vector("Left", "Right", "Up", "Down")
 	global_position += (SPEED * dir * delta)
 	offset += (SPEED * dir * delta)
+	get_tree()
 	queue_redraw()
