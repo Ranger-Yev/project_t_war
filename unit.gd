@@ -53,11 +53,11 @@ func _ready() -> void:
 	select_graphic(division_type[0], unit_color)
 
 func _process(delta: float) -> void:
-	var useless = delta - delta
-	print(useless)
-	print(main_scene_node)
-	print(selected)
-	print(audio_play)
+	#var useless = delta - delta
+	#print(useless)
+	#print(main_scene_node)
+	#print(selected)
+	#print(audio_play)
 	pass
 
 

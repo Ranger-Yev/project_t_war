@@ -11,12 +11,6 @@ var offset = Vector2.ZERO
 @onready var sel_move = $"."
 var alleg = "unassigned" # allegiance
 
-const ZOOM_MAX = Vector2(6,6)
-const ZOOM_MIN = Vector2(0.5,0.5)
-const ZOOM_SPEED = 1
-var zoom_in = false
-var zoom_out = false
-
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
 		start = get_viewport().get_mouse_position() # starting coords of the selection box.
@@ -39,15 +33,12 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	collision_box.global_position = local_start + offset
 	selected = selector.get_overlapping_bodies()
 
-func zoom(zoom_d: float) -> void:
-	pass
-
 func get_selected():
 	return selected
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left", "Right", "Up", "Down")
 	global_position += (SPEED * dir * delta)
-	offset += (SPEED * dir * delta)
+	offset += (SPEED * dir * delta) # offset for the collision box of the selection box
 	get_tree()
 	queue_redraw()

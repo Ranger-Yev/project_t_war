@@ -29,33 +29,38 @@ func _ready():
 			#print(z)
 			for y in z.get_children():
 				#print(y.global_position)
-				var unit = unit_scene.instantiate() as CharacterBody2D
-				var unit_type = 0
-				match z.name:
-					"inf_mtnrs":
-						unit_type = 1
-					"inf_mil":
-						unit_type = 2
-					"inf_strm":
-						unit_type = 3
-					"inf_para":
-						unit_type = 4
-					"inf_sf":
-						unit_type = 5
-					"inf_moto":
-						unit_type = 6
-					"inf_mech":
-						unit_type = 7
-					"armor_mbt":
-						unit_type = 8
-				if i == fed: # fed spawns
-					units[0].add_child(unit)
-					configure_unit(unit, 0, 0, unit_type, y.global_position) # union alligned, federal, unit_type
-					#print("federal")
-				if i == circle: # gc spawns
-					units[1].add_child(unit)
-					configure_unit(unit, 1, 0, unit_type, y.global_position) # seccession alligned, gc, unit_type
-					#print("circle")
+				if z.name != "template_nation_spawns":
+					var unit = unit_scene.instantiate() as CharacterBody2D
+					var unit_type = 0
+					match z.name:
+						"inf_mtnrs":
+							unit_type = 1
+						"inf_mil":
+							unit_type = 2
+						"inf_strm":
+							unit_type = 3
+						"inf_para":
+							unit_type = 4
+						"inf_sf":
+							unit_type = 5
+						"inf_moto":
+							unit_type = 6
+						"inf_mech":
+							unit_type = 7
+						"armor_mbt":
+							unit_type = 8
+					if i.name == "federal": # fed spawns
+						units[0].add_child(unit)
+						configure_unit(unit, 0, 0, unit_type, y.global_position) # union alligned, federal, unit_type
+						#print("federal")
+					if i.name == "golden_circle": # gc spawns
+						units[1].add_child(unit)
+						configure_unit(unit, 1, 0, unit_type, y.global_position) # seccession alligned, gc, unit_type
+						#print("circle")
+					if i.name == "tinkle-o": # tinkleologist spawns
+						units[1].add_child(unit)
+						configure_unit(unit, 2, 1, unit_type, y.global_position) # seccession alligned, gc, unit_type
+						#print("tinkleologist")
 
 #_________________________________________________________
 # Federal, Teklasiana, Commonwealth, Cascadia, Consumerist
