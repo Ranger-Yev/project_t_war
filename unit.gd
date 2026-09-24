@@ -21,14 +21,14 @@ var main_scene_node
 
 # complete list of states and corresponding unit color
 var STATES = [ ["federal", "teklasiana", "commonwealth", "cascadia", "cspc"] , ["circle", "unions"] , ["tinkle","tinkleologist"]]
-var UNITCOLORS = [[Color8(50,60,210,255), Color8(15,85,125,255), Color8(130,165,140,255), Color8(65,230,120,255), Color8(210,130,90,255)], [Color8(0,0,0,255), Color8(135.0, 18.004, 19.406, 1.0)], [Color8(200,0,200,255), Color8(185,150,255,255)]]
+var UNITCOLORS = [[Color.from_rgba8(75, 96, 254, 255), Color.from_rgba8(15,85,125,255), Color.from_rgba8(130,165,140,255), Color.from_rgba8(65,230,120,255), Color.from_rgba8(210,130,90,255)], [Color.from_rgba8(0,0,0,255), Color.from_rgba8(135, 18, 19, 1)], [Color.from_rgba8(200,0,200,255), Color.from_rgba8(185,150,255,255)]]
 
 
 # internal variables not meant for human eyes
 var BASESPEED = 200.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
 
-var division_type = ["infantry_um"]
+var division_type
 var allegiance = "federal"
 var unit_color = Color8(0,0,0,0);
 var selected = false
@@ -51,18 +51,27 @@ func _ready() -> void:
 	
 	select_graphic(division_type[0], unit_color)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if main_scene_node == null:
 		pass
 	else:
-		print(main_scene_node)
-		#print(audio_play)
 		pass
+		# if 
+		#print(main_scene_node)
+	move_and_slide()
 
 func move(cupos: Vector2, dest: Vector2) -> void: # current position and destination
 	if (cupos.x > dest.x - 50.0 or cupos.x < dest.x + 50.0) and (cupos.y > dest.y - 50.0 or cupos.y < dest.y + 50.0):
 		cupos = dest
 		itself.global_position = dest
+		itself.velocity = itself.velocity * 0
+	else:
+		var dir = Vector2.ZERO
+		if dest.x > cupos.x: dir.x = 1
+		else: dir.x = -1
+		if dest.y > cupos.y: dir.y = 1
+		else: dir.y = -1
+		itself.velocity = BASESPEED * division_type[1]
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D
@@ -92,6 +101,7 @@ func set_allegiance(faction_i, state_i):
 # pick a division type
 # inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt
 # 0       1          2        3         4         5       6         7         8
+
 func set_unit_type(div_type_i):
 	division_type = DIVISIONS[div_type_i]
 	select_graphic(division_type[0], unit_color)
