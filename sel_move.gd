@@ -15,12 +15,11 @@ func _draw():
 	if Input.is_action_just_pressed("LMB"):
 		start = get_viewport().get_mouse_position() # starting coords of the selection box.
 	if Input.is_action_pressed("LMB"):
-		var cur_mouse_pos = get_viewport().get_mouse_position() # current moujse position
+		var cur_mouse_pos = get_viewport().get_mouse_position() # current mouse position
 		var rect_size = Vector2(cur_mouse_pos.x - start.x, cur_mouse_pos.y - start.y) # gets proper size of the selection box
 		var sel_rect = Rect2(start.x, start.y, rect_size.x, rect_size.y) # actual selection box
 		#print("LMB")
 		draw_rect(sel_rect, Color(0.429, 0.611, 0.824, 0.549), true) # drawing the actual selection box
-		
 		touching_units(start, rect_size) # detection box
 	if Input.is_action_just_released("LMB"):
 		start = Vector2.ZERO # resets the starting coords
@@ -31,10 +30,17 @@ func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detect
 	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
 	collision_box.global_position = local_start + offset
-	selected = selector.get_overlapping_bodies()
+	selected = selector.get_overlapping_areas()
 
 func get_selected():
-	return selected
+	var selected_out = [] # since I switched to Area2Ds for unit selection I have to first 'sanitize' the output to make sure the rest of my code (which expects CharacterBody2Ds) works.
+	for i in selected:
+		var switch = i.get_parent()
+		selected_out.append(switch)
+	return selected_out
+
+func get_offset():
+	return offset
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left", "Right", "Up", "Down")

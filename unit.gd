@@ -6,7 +6,6 @@ var rng = RandomNumberGenerator.new()
 var main_scene_node
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
-@onready var select_hitbox = $select_hitbox
 @onready var votimer = $votimer
 
 # division attributes, list goes as follows, [String name, float speed, ]
@@ -53,13 +52,17 @@ func _ready() -> void:
 	select_graphic(division_type[0], unit_color)
 
 func _process(delta: float) -> void:
-	#var useless = delta - delta
-	#print(useless)
-	#print(main_scene_node)
-	#print(selected)
-	#print(audio_play)
-	pass
+	if main_scene_node == null:
+		pass
+	else:
+		print(main_scene_node)
+		#print(audio_play)
+		pass
 
+func move(cupos: Vector2, dest: Vector2) -> void: # current position and destination
+	if (cupos.x > dest.x - 50.0 or cupos.x < dest.x + 50.0) and (cupos.y > dest.y - 50.0 or cupos.y < dest.y + 50.0):
+		cupos = dest
+		itself.global_position = dest
 
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D

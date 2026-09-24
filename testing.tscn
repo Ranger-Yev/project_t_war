@@ -8,16 +8,30 @@
 script = ExtResource("1_feb8i")
 
 [node name="tinkle_war" type="Sprite2D" parent="." unique_id=898311962]
-position = Vector2(1, 4)
+position = Vector2(2, 3)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qrja6")
 
 [node name="units" type="Node2D" parent="." unique_id=1411853458]
 scale = Vector2(0.9955929, 0.9249115)
 
-[node name="federal" type="Node2D" parent="units" unique_id=1364833277]
+[node name="federal-0" type="Node2D" parent="units" unique_id=1364833277]
 
-[node name="golden_circle" type="Node2D" parent="units" unique_id=1383814236]
+[node name="teklas-1" type="Node2D" parent="units" unique_id=867075606]
+
+[node name="commonwealth-2" type="Node2D" parent="units" unique_id=21671720]
+
+[node name="cascadia-3" type="Node2D" parent="units" unique_id=1505808879]
+
+[node name="consumerist-4" type="Node2D" parent="units" unique_id=1911559554]
+
+[node name="golden_circle-5" type="Node2D" parent="units" unique_id=1383814236]
+
+[node name="unions-6" type="Node2D" parent="units" unique_id=1417414248]
+
+[node name="tinkle-7" type="Node2D" parent="units" unique_id=2111262209]
+
+[node name="tinkle-o-8" type="Node2D" parent="units" unique_id=1388239747]
 
 [node name="spawns" type="Node" parent="." unique_id=1147689969]
 
@@ -385,25 +399,25 @@ position = Vector2(-490, 98)
 position = Vector2(-484, 254)
 
 [node name="marker17" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=358208979]
-position = Vector2(-259, 293)
+position = Vector2(-259, 278)
 
 [node name="marker18" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1369911227]
-position = Vector2(-261, 336)
+position = Vector2(-255, 320)
 
 [node name="marker19" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=946395714]
-position = Vector2(-227, 404)
+position = Vector2(-222, 389)
 
 [node name="marker20" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1014485420]
-position = Vector2(-174, 442)
+position = Vector2(-173, 430)
 
 [node name="marker21" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1193694042]
-position = Vector2(-366, 439)
+position = Vector2(-367, 410)
 
 [node name="marker22" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1383363971]
 position = Vector2(-724, -595)
 
 [node name="marker23" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=430418433]
-position = Vector2(-844, -650)
+position = Vector2(-841, -654)
 
 [node name="marker24" type="Marker2D" parent="spawns/golden_circle/inf_mil" unique_id=1063198241]
 position = Vector2(-1165, 29)
@@ -441,7 +455,7 @@ position = Vector2(-911, -41)
 position = Vector2(-1110, 60)
 
 [node name="marker7" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=1182151437]
-position = Vector2(-1108, 145)
+position = Vector2(-1095, 114)
 
 [node name="marker8" type="Marker2D" parent="spawns/golden_circle/inf_strm" unique_id=97842640]
 position = Vector2(-778, -624)

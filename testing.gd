@@ -3,25 +3,24 @@ var unit_scene: PackedScene = preload("res://unit.tscn") # unit template
 @onready var selector = $Selector
 var pa = "unassigned" # player allegiance
 var selected = []
+var offset = Vector2.ZERO
 
 func _process(_delta :float) -> void:
 	selected = selector.get_selected()
+	offset = selector.get_offset()
 	#print(selected)
 	for i in selected:
-		
-		if i.get_parent().name != "federal":
+		if i.get_parent().name != "federal-0":
 			selected.erase(i)
-	
 	#print(selected)
+	
 
 
 func _ready():
 	pa = "federal"
-	var units = [$units/federal, $units/golden_circle] # path to where all units are stored
+	var units = $units.get_children() # path to where all units are stored
 	
 	var spawn_pos = $spawns.get_children() # all spawns
-	var fed = $spawns/federal # federal spawns
-	var circle = $spawns/golden_circle # gc spawns
 	
 	for i in spawn_pos:
 		var spawn_unit_types = i.get_children() 
@@ -53,12 +52,36 @@ func _ready():
 						units[0].add_child(unit)
 						configure_unit(unit, 0, 0, unit_type, y.global_position) # union alligned, federal, unit_type
 						#print("federal")
-					if i.name == "golden_circle": # gc spawns
+					if i.name == "teklas": # fed spawns
 						units[1].add_child(unit)
+						configure_unit(unit, 0, 1, unit_type, y.global_position) # union alligned, federal, unit_type
+						#print("teklas")
+					if i.name == "commonwealth": # fed spawns
+						units[2].add_child(unit)
+						configure_unit(unit, 0, 2, unit_type, y.global_position) # union alligned, federal, unit_type
+						#print("commonwealth")
+					if i.name == "cascadia": # fed spawns
+						units[3].add_child(unit)
+						configure_unit(unit, 0, 3, unit_type, y.global_position) # union alligned, federal, unit_type
+						#print("cascadia")
+					if i.name == "consumerist": # fed spawns
+						units[4].add_child(unit)
+						configure_unit(unit, 0, 4, unit_type, y.global_position) # union alligned, federal, unit_type
+						#print("consumerist")
+					if i.name == "golden_circle": # gc spawns
+						units[5].add_child(unit)
 						configure_unit(unit, 1, 0, unit_type, y.global_position) # seccession alligned, gc, unit_type
 						#print("circle")
+					if i.name == "unions": # gc spawns
+						units[6].add_child(unit)
+						configure_unit(unit, 1, 1, unit_type, y.global_position) # seccession alligned, gc, unit_type
+						#print("unions")
+					if i.name == "tinkle": # gc spawns
+						units[7].add_child(unit)
+						configure_unit(unit, 2, 0, unit_type, y.global_position) # seccession alligned, gc, unit_type
+						#print("tinkle")
 					if i.name == "tinkle-o": # tinkleologist spawns
-						units[1].add_child(unit)
+						units[8].add_child(unit)
 						configure_unit(unit, 2, 1, unit_type, y.global_position) # seccession alligned, gc, unit_type
 						#print("tinkleologist")
 
@@ -91,4 +114,3 @@ func is_selected(u: CharacterBody2D):
 	if u in selected:
 		return true
 	return false
-		
