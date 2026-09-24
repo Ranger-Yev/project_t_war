@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://uk8wh775lnoj"]
 
 [ext_resource type="Script" uid="uid://dqdk0jap2lh3l" path="res://unit.gd" id="1_ctwoc"]
-[ext_resource type="Texture2D" uid="uid://baooe7xnxupbo" path="res://assets/unit_art/infantry_militia.png" id="2_ctwoc"]
+[ext_resource type="Texture2D" uid="uid://dipqych807sf2" path="res://assets/unit_art/infantry_um.png" id="2_davkp"]
 [ext_resource type="AudioStream" uid="uid://cwtiihtfld2b0" path="res://assets/audio/div_om2.mp3" id="3_davkp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s37yc"]
-radius = 5.4629564
+radius = 2.744056
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_davkp"]
-size = Vector2(20, 10)
+size = Vector2(20.303032, 10)
 
 [node name="Unit" type="CharacterBody2D" unique_id=1222968675]
 scale = Vector2(3.3, 3.3)
@@ -18,9 +18,9 @@ script = ExtResource("1_ctwoc")
 shape = SubResource("CircleShape2D_s37yc")
 
 [node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
-position = Vector2(-2.3841858e-07, 2.3841858e-07)
-scale = Vector2(0.3030303, 0.29411763)
-texture = ExtResource("2_ctwoc")
+position = Vector2(0.15151492, 2.3841858e-07)
+scale = Vector2(0.3076217, 0.29411763)
+texture = ExtResource("2_davkp")
 
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=2076677286]
 stream = ExtResource("3_davkp")
@@ -31,7 +31,7 @@ collision_mask = 2
 monitoring = false
 
 [node name="select_hitbox_shape" type="CollisionShape2D" parent="select_hitbox" unique_id=537999823]
-position = Vector2(-2.3841858e-07, 1.1920929e-07)
+position = Vector2(0.15151548, 0)
 shape = SubResource("RectangleShape2D_davkp")
 debug_color = Color(0.6765481, 0.5061453, 0, 0.41960785)
 

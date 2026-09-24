@@ -21,7 +21,7 @@ var main_scene_node
 
 # complete list of states and corresponding unit color
 var STATES = [ ["federal", "teklasiana", "commonwealth", "cascadia", "cspc"] , ["circle", "unions"] , ["tinkle","tinkleologist"]]
-var UNITCOLORS = [[Color.from_rgba8(75, 96, 254, 255), Color.from_rgba8(15,85,125,255), Color.from_rgba8(130,165,140,255), Color.from_rgba8(65,230,120,255), Color.from_rgba8(210,130,90,255)], [Color.from_rgba8(0,0,0,255), Color.from_rgba8(135, 18, 19, 1)], [Color.from_rgba8(200,0,200,255), Color.from_rgba8(185,150,255,255)]]
+var UNITCOLORS = [[Color.from_rgba8(75, 96, 254, 255), Color.from_rgba8(20, 156, 214, 255), Color.from_rgba8(62, 196, 178, 255), Color.from_rgba8(65,230,120,255), Color.from_rgba8(234, 110, 62, 255)], [Color.from_rgba8(0,0,0,255), Color.from_rgba8(255, 70, 94, 255)], [Color.from_rgba8(200,0,200,255), Color.from_rgba8(185,150,255,255)]]
 
 
 # internal variables not meant for human eyes
@@ -30,7 +30,7 @@ var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_mot
 
 var division_type
 var allegiance = "federal"
-var unit_color = Color8(0,0,0,0);
+var unit_color = Color.from_rgba8(0,0,0,0);
 var selected = false
 var audio_play = true
 var cur_pos = null
@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	cur_pos = itself.global_position
 	if cur_pos != destination and destination != null:
 		move(cur_pos, destination, true)
-		if sqrt(pow((destination.x - cur_pos.x), 2) + pow((destination.y - cur_pos.y), 2)) < 5: # teleports the unit and stops moving it if the unit is close enough to the destination
+		if sqrt(pow((destination.x - cur_pos.x), 2) + pow((destination.y - cur_pos.y), 2)) < 1: # teleports the unit and stops moving it if the unit is close enough to the destination
 			itself.global_position = destination
 			destination = null
 	else:
@@ -78,8 +78,8 @@ func move(cupos: Vector2, dest: Vector2, sel: bool) -> void: # current position 
 	if dir.y < 0: dir.y = 1
 	else: dir.y = -1
 	#print(dir)
-	itself.velocity.x = dir.x * BASESPEED * division_type[1]
-	itself.velocity.y = dir.y * BASESPEED * division_type[1]
+	itself.velocity.x = dir.x * BASESPEED * division_type[1] 
+	itself.velocity.y = dir.y * BASESPEED * division_type[1]   
 	#print(itself.velocity)
 	
 func select_graphic(unit_type: String, color: Color):

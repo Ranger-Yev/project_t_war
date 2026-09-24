@@ -4,18 +4,19 @@ var selected = []
 const SPEED = 1000.0
 var dir
 var start = null
-var offset = Vector2.ZERO
 @onready var cam = $Selector/Camera2D
 @onready var collision_box: CollisionShape2D = $Selector/CollisionShape2D
 @onready var selector = $Selector
 @onready var sel_move = $"."
 var alleg = "unassigned" # allegiance
+var cur_zoom = Vector2(1,1)
+var offset = Vector2.ZERO
 
 func _draw():
 	if Input.is_action_just_pressed("LMB"):
-		start = get_viewport().get_mouse_position() # starting coords of the selection box.
+		start = get_global_mouse_position() # starting coords of the selection box.
 	if Input.is_action_pressed("LMB"):
-		var cur_mouse_pos = get_viewport().get_mouse_position() # current mouse position
+		var cur_mouse_pos = get_global_mouse_position() # current mouse position
 		var rect_size = Vector2(cur_mouse_pos.x - start.x, cur_mouse_pos.y - start.y) # gets proper size of the selection box
 		var sel_rect = Rect2(start.x, start.y, rect_size.x, rect_size.y) # actual selection box
 		#print("LMB")
@@ -29,7 +30,7 @@ func _draw():
 func touching_units(local_start: Vector2, rect_size: Vector2): # the unit detection box :3
 	local_start = Vector2(local_start.x + (rect_size.x / 2), local_start.y + (rect_size.y / 2))
 	collision_box.shape.set_size(abs(Vector2(rect_size)))
-	collision_box.global_position = local_start + offset
+	collision_box.global_position = local_start
 	selected = selector.get_overlapping_areas()
 
 func get_selected():
@@ -39,12 +40,18 @@ func get_selected():
 		selected_out.append(switch)
 	return selected_out
 
-func get_offset():
-	return offset
-
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left", "Right", "Up", "Down")
 	global_position += (SPEED * dir * delta)
-	offset += (SPEED * dir * delta) # offset for the collision box of the selection box
+	offset += (SPEED * dir * delta)
+	if Input.is_action_just_pressed("MMB"):
+		cam.zoom = Vector2(1,1)
+	
+	if Input.is_action_just_pressed("Scroll_Up") and not cur_zoom > Vector2(6,6):
+		cur_zoom += Vector2(0.1, 0.1)
+	if  Input.is_action_just_pressed("Scroll_Down") and not cur_zoom < Vector2(0.5,0.5):
+		cur_zoom -= Vector2(0.1, 0.1)
+	cam.zoom = cur_zoom
+	
 	get_tree()
 	queue_redraw()

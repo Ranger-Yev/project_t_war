@@ -3,15 +3,13 @@ var unit_scene: PackedScene = preload("res://unit.tscn") # unit template
 @onready var selector = $Selector
 var pa = "unassigned" # player allegiance
 var selected = []
-var offset = Vector2.ZERO
 
 func _process(_delta :float) -> void:
 	selected = selector.get_selected()
-	offset = selector.get_offset()
 	if Input.is_action_just_pressed("RMB") and selected != []:
 		for i in selected:
 			if i.get_parent().name == "federal-0":
-				i.move(i.global_position, get_viewport().get_mouse_position() + offset, true)
+				i.move(i.global_position, get_global_mouse_position(), true)
 				#print("Destination >>> ", get_viewport().get_mouse_position() + offset, "\nCurrent Position >>> ", i.global_position, "\n")
 
 func _ready():
@@ -30,7 +28,7 @@ func _ready():
 					var unit = unit_scene.instantiate() as CharacterBody2D
 					var unit_type = 0
 					match z.name:
-						"inf_mtnrs":
+						"inf_mntrs":
 							unit_type = 1
 						"inf_mil":
 							unit_type = 2
@@ -96,7 +94,7 @@ func _ready():
 # inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt
 # 0       1          2        3         4         5       6         7         8
 
-# unit, faction, state, unit type
+# unit, faction, state, unit type, position
 func configure_unit(u: CharacterBody2D, f: int, s: int, ut: int, pos) -> void:
 	if f > 2 or f <= 0: # If outside the parameters set to default US aligned
 		f = 0
