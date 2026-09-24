@@ -8,13 +8,11 @@ var offset = Vector2.ZERO
 func _process(_delta :float) -> void:
 	selected = selector.get_selected()
 	offset = selector.get_offset()
-	#print(selected)
-	for i in selected:
-		if i.get_parent().name != "federal-0":
-			selected.erase(i)
-	#print(selected)
-	
-
+	if Input.is_action_just_pressed("RMB") and selected != []:
+		for i in selected:
+			if i.get_parent().name == "federal-0":
+				i.move(i.global_position, get_viewport().get_mouse_position() + offset, true)
+				#print("Destination >>> ", get_viewport().get_mouse_position() + offset, "\nCurrent Position >>> ", i.global_position, "\n")
 
 func _ready():
 	pa = "federal"

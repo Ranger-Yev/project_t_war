@@ -25,7 +25,7 @@ var UNITCOLORS = [[Color.from_rgba8(75, 96, 254, 255), Color.from_rgba8(15,85,12
 
 
 # internal variables not meant for human eyes
-var BASESPEED = 200.0
+var BASESPEED = 10.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
 
 var division_type
@@ -33,6 +33,8 @@ var allegiance = "federal"
 var unit_color = Color8(0,0,0,0);
 var selected = false
 var audio_play = true
+var cur_pos = null
+var destination = null
 
 func _ready() -> void:
 	if itself.get_parent().name != "root":
@@ -51,28 +53,35 @@ func _ready() -> void:
 	
 	select_graphic(division_type[0], unit_color)
 
-func _physics_process(delta: float) -> void:
-	if main_scene_node == null:
-		pass
+func _physics_process(_delta: float) -> void:
+	cur_pos = itself.global_position
+	if cur_pos != destination and destination != null:
+		move(cur_pos, destination, true)
+		if sqrt(pow((destination.x - cur_pos.x), 2) + pow((destination.y - cur_pos.y), 2)) < 5: # teleports the unit and stops moving it if the unit is close enough to the destination
+			itself.global_position = destination
+			destination = null
 	else:
-		pass
-		# if 
-		#print(main_scene_node)
+		itself.velocity = Vector2.ZERO
+
 	move_and_slide()
 
-func move(cupos: Vector2, dest: Vector2) -> void: # current position and destination
-	if (cupos.x > dest.x - 50.0 or cupos.x < dest.x + 50.0) and (cupos.y > dest.y - 50.0 or cupos.y < dest.y + 50.0):
-		cupos = dest
-		itself.global_position = dest
-		itself.velocity = itself.velocity * 0
-	else:
-		var dir = Vector2.ZERO
-		if dest.x > cupos.x: dir.x = 1
-		else: dir.x = -1
-		if dest.y > cupos.y: dir.y = 1
-		else: dir.y = -1
-		itself.velocity = BASESPEED * division_type[1]
-
+func move(cupos: Vector2, dest: Vector2, sel: bool) -> void: # current position and destination
+	cur_pos = cupos
+	destination = dest
+	selected = sel
+	#print(cupos, " ", dest)
+	#print("moving")
+	var dir = cupos - dest
+	#print(dir)
+	if dir.x < 0: dir.x = 1
+	else: dir.x = -1
+	if dir.y < 0: dir.y = 1
+	else: dir.y = -1
+	#print(dir)
+	itself.velocity.x = dir.x * BASESPEED * division_type[1]
+	itself.velocity.y = dir.y * BASESPEED * division_type[1]
+	#print(itself.velocity)
+	
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D
 	sprite.set_texture(texture)
@@ -108,3 +117,6 @@ func set_unit_type(div_type_i):
 
 func _on_votimer_timeout() -> void:
 	audio_play = true
+
+func set_selected(sel: bool):
+	selected = sel
