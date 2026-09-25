@@ -7,6 +7,7 @@ var main_scene_node
 @onready var sprite = $unit_graphic
 @onready var audio_p = $audio_player
 @onready var votimer = $votimer
+@onready var battle_hitbox = $battle_hitbox
 
 # division attributes [String name, float speed modifier, float hp, float morale, float attack, float armor, float defense, float pen]
 # name, spd, hp, mor, atk, arm, def, pen
@@ -42,6 +43,7 @@ var cur_pos = null
 var destination = null
 var in_battle = false
 var i_started_it = false
+var engaging = []
 
 func _ready() -> void:
 	if itself.get_parent().name != "root":
@@ -61,38 +63,60 @@ func _ready() -> void:
 	select_graphic(division_type[0], unit_color)
 
 func _physics_process(_delta: float) -> void:
+	var units_in_range = battle_hitbox.get_overlapping_areas()
+	var enemies_in_range = false
+	for i in units_in_range:
+		if i.get_parent().allegiance != itself.allegiance:
+			enemies_in_range = true
+			
 	cur_pos = itself.global_position
 	if cur_pos != destination and destination != null:
+		if not in_battle and units_in_range != [] and enemies_in_range: # code for battles
+			i_started_it = true
+			in_battle = true
+		else:
+			battle(units_in_range)
 		move(cur_pos, destination, true)
 		if sqrt(pow((destination.x - cur_pos.x), 2) + pow((destination.y - cur_pos.y), 2)) < 1: # teleports the unit and stops moving it if the unit is close enough to the destination
 			itself.global_position = destination
 			destination = null
 	else:
 		itself.velocity = Vector2.ZERO
-	if not in_battle: # code for battles
-		i_started_it = false
-		
 	move_and_slide()
 
-func battle():
-	pass
+# name, spd, hp, mor, atk, arm, def, pen
+# 0     1    2   3    4    5    6    7
+func battle(uir: Array): # units in range,
+	if i_started_it:
+		print("I STARTED IT!!!!", itself.allegiance) 
+	for i in uir:
+		if i.get_parent().allegiance != itself.allegiance:
+			print(i.get_parent().allegiance)
 
 func move(cupos: Vector2, dest: Vector2, sel: bool) -> void: # current position and destination
-	cur_pos = cupos
-	destination = dest
-	selected = sel
-	#print(cupos, " ", dest)
-	#print("moving")
-	var dir = cupos - dest
-	#print(dir)
-	if dir.x < 0: dir.x = 1
-	else: dir.x = -1
-	if dir.y < 0: dir.y = 1
-	else: dir.y = -1
-	#print(dir)
-	itself.velocity.x = dir.x * BASESPEED * division_type[1] 
-	itself.velocity.y = dir.y * BASESPEED * division_type[1]   
-	#print(itself.velocity)
+	if not in_battle:
+		cur_pos = cupos
+		destination = dest
+		selected = sel
+		#print(cupos, " ", dest)
+		#print("moving")
+		var dir = cupos - dest
+		#print(dir)
+		if dir.x < 0: dir.x = 1
+		else: dir.x = -1
+		if dir.y < 0: dir.y = 1
+		else: dir.y = -1
+		var diagonal_debuff = 1
+		if dir in [Vector2(1,1), Vector2(1,-1), Vector2(-1,1), Vector2(-1,-1)]:
+			diagonal_debuff = 0.5
+		#print(dir)
+		itself.velocity.x = dir.x * BASESPEED * division_type[1] * diagonal_debuff
+		itself.velocity.y = dir.y * BASESPEED * division_type[1] * diagonal_debuff  
+		#print(itself.velocity)
+	else:
+		itself.velocity.x = 0
+		itself.velocity.y = 0
+		
 	
 func select_graphic(unit_type: String, color: Color):
 	var texture = load("res://assets/unit_art/" + unit_type + ".png") as CompressedTexture2D

@@ -49,9 +49,16 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Scroll_Up") and not cur_zoom > Vector2(6,6):
 		cur_zoom += Vector2(0.1, 0.1)
+		if cur_zoom > Vector2(3,3):
+			cur_zoom += Vector2(0.2, 0.2)
+			if cur_zoom > Vector2(4.5,4.5):
+				cur_zoom += Vector2(0.2, 0.2)
 	if  Input.is_action_just_pressed("Scroll_Down") and not cur_zoom < Vector2(0.5,0.5):
 		cur_zoom -= Vector2(0.1, 0.1)
+		if cur_zoom > Vector2(3,3):
+			cur_zoom -= Vector2(0.2, 0.2)
+			if cur_zoom > Vector2(4.5,4.5):
+				cur_zoom -= Vector2(0.2, 0.2)
 	cam.zoom = cur_zoom
-	
-	get_tree()
+
 	queue_redraw()
