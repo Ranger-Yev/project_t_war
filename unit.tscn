@@ -14,7 +14,9 @@ size = Vector2(20.303032, 10)
 scale = Vector2(3.3, 3.3)
 script = ExtResource("1_ctwoc")
 
-[node name="unit_hitbox" type="CollisionShape2D" parent="." unique_id=603392609]
+[node name="battle_hitbox" type="Area2D" parent="." unique_id=1984688084]
+
+[node name="battle_hitbox_shape" type="CollisionShape2D" parent="battle_hitbox" unique_id=603392609]
 shape = SubResource("CircleShape2D_s37yc")
 
 [node name="unit_graphic" type="Sprite2D" parent="." unique_id=1446266510]
