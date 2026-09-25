@@ -8,26 +8,31 @@ var main_scene_node
 @onready var audio_p = $audio_player
 @onready var votimer = $votimer
 
-# division attributes, list goes as follows, [String name, float speed, ]
-@export var inf_um = ["infantry_um", 1.0]
-@export var inf_mntrs = ["infantry_mntrs", 1.1]
-@export var inf_mil = ["infantry_militia", 1.3]
-@export var inf_strm = ["infantry_storm", 1.5]
-@export var inf_para = ["infantry_paratroops", 1.5]
-@export var inf_sf = ["infantry_sf", 1.6]
-@export var inf_moto = ["infantry_moto", 2.5]
-@export var inf_mech = ["infantry_mech", 2.2]
-@export var armor_mbt = ["tank_division", 3.0]
+# division attributes [String name, float speed modifier, float hp, float morale, float attack, float armor, float defense, float pen]
+# name, spd, hp, mor, atk, arm, def, pen
+# 0     1    2   3    4    5    6    7
+@export var inf_um = ["infantry_um", 1.0, 100.0, 100.0, 1.0, 1.0, 10.0, 5.0]
+@export var inf_mntrs = ["infantry_mntrs", 1.1, 150.0, 125.0, 1.5, 0.5, 15.0, 7.5]
+@export var inf_mil = ["infantry_militia", 1.3, 70.0, 90.0, 0.7, 0.5, 10.0, 1.0]
+@export var inf_strm = ["infantry_storm", 1.5, 70.0, 150.0, 3.5, 2.0, 3.0, 5.0]
+@export var inf_para = ["infantry_paratroops", 1.5, 175.0, 150.0, 1.0, 0.0, 5.0, 25.0]
+@export var inf_sf = ["infantry_sf", 1.6, 50.0, 160.0, 4.0, 3.0, 5.0, 35.0]
+@export var inf_moto = ["infantry_moto", 2.5, 110.0, 100.0, 1.5, 7.5, 8.5, 25.0]
+@export var inf_mech = ["infantry_mech", 2.2, 150.0, 90.0, 5.0, 30.0, 10.0, 45.0]
+@export var armor_mbt = ["tank_division", 3.0, 40.0, 60.0, 10.0, 60.0, 3.0, 65.0]
+
+# internal variables for battle
+var health
+var morale
+var unit_str
 
 # complete list of states and corresponding unit color
 var STATES = [ ["federal", "teklasiana", "commonwealth", "cascadia", "cspc"] , ["circle", "unions"] , ["tinkle","tinkleologist"]]
 var UNITCOLORS = [[Color.from_rgba8(75, 96, 254, 255), Color.from_rgba8(20, 156, 214, 255), Color.from_rgba8(62, 196, 178, 255), Color.from_rgba8(65,230,120,255), Color.from_rgba8(234, 110, 62, 255)], [Color.from_rgba8(0,0,0,255), Color.from_rgba8(255, 70, 94, 255)], [Color.from_rgba8(200,0,200,255), Color.from_rgba8(185,150,255,255)]]
 
-
 # internal variables not meant for human eyes
 var BASESPEED = 10.0
 var DIVISIONS = [inf_um, inf_mntrs, inf_mil, inf_strm, inf_para, inf_sf, inf_moto, inf_mech, armor_mbt]
-
 var division_type
 var allegiance = "federal"
 var unit_color = Color.from_rgba8(0,0,0,0);
@@ -35,6 +40,8 @@ var selected = false
 var audio_play = true
 var cur_pos = null
 var destination = null
+var in_battle = false
+var i_started_it = false
 
 func _ready() -> void:
 	if itself.get_parent().name != "root":
@@ -62,8 +69,13 @@ func _physics_process(_delta: float) -> void:
 			destination = null
 	else:
 		itself.velocity = Vector2.ZERO
-
+	if not in_battle: # code for battles
+		i_started_it = false
+		
 	move_and_slide()
+
+func battle():
+	pass
 
 func move(cupos: Vector2, dest: Vector2, sel: bool) -> void: # current position and destination
 	cur_pos = cupos
